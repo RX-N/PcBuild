@@ -22,13 +22,19 @@ function auth(req, res, next) {
 // Save a build
 router.post('/', auth, async (req, res) => {
   try {
+    const { components, totalPrice } = req.body;
+
     const newBuild = new Build({
       userId: req.user.userId,
-      components: req.body
+      components,
+      totalPrice,
+      createdAt: new Date(),
     });
+
     await newBuild.save();
     res.status(201).json({ message: 'Build saved successfully' });
   } catch (err) {
+    console.error(err);
     res.status(500).json({ error: 'Failed to save build' });
   }
 });
