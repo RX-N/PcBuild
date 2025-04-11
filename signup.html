@@ -69,7 +69,7 @@
             const password = form.password.value;
 
             try {
-                const res = await fetch('http://build-my-rig.onrender.com/api/auth/register', {
+                const res = await fetch('https://build-my-rig.onrender.com/api/auth/register', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ username, email, password })
