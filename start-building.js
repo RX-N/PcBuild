@@ -224,7 +224,7 @@ saveButton.addEventListener("click", async () => {
   if (!token) return alert("Please login to save your build.");
 
   try {
-    const res = await fetch("http://localhost:3000/api/build/save", {
+    const res = await fetch("http://build-my-rig.onrender.com/api/build/save", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
