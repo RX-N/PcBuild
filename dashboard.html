@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Builds</title>
+  <link rel="stylesheet" href="start-building.css">
+</head>
+
+<body>
+  <nav>
+    <div class="logo">
+      <a href="index.html">
+        <img src="logo.png" alt="PC Build Logo">
+      </a>
+    </div>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="start-building.html">Build Your PC</a></li>
+      <li><a href="dashboard.html">My Builds</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="login.html">Login</a></li>
+      <li><a href="signup.html">Sign Up</a></li>
+      <li><button id="toggle-theme" title="Toggle Light/Dark Mode">🌗</button></li>
+    </ul>
+  </nav>
+
+  <div class="container">
+    <h1>My Saved Builds</h1>
+    <div id="builds-container">
+      <p>Loading your builds...</p>
+    </div>
+  </div>
+
+  <script>
+    const container = document.getElementById('builds-container');
+    const toggleTheme = document.getElementById('toggle-theme');
+
+    // Theme toggle
+    document.addEventListener('DOMContentLoaded', () => {
+      if (localStorage.getItem('theme') === 'dark') {
+        document.body.classList.add('dark-mode');
+      }
+      fetchBuilds();
+    });
+
+    toggleTheme.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+      const isDark = document.body.classList.contains('dark-mode');
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    });
+
+    // Fetch saved builds
+    async function fetchBuilds() {
+      const token = localStorage.getItem('token');
+      if (!token) {
+        container.innerHTML = "<p>Please log in to view your builds.</p>";
+        return;
+      }
+
+      try {
+        const res = await fetch('http://localhost:5500/api/build/mybuilds', {
+          headers: {
+            'Authorization': `Bearer ${token}`
+          }
+        });
+        const builds = await res.json();
+
+        if (!Array.isArray(builds) || builds.length === 0) {
+          container.innerHTML = "<p>No builds found. Start building your PC!</p>";
+          return;
+        }
+
+        container.innerHTML = '';
+        builds.forEach(build => {
+          const buildDiv = document.createElement('div');
+          buildDiv.classList.add('component-card');
+          const date = new Date(build.createdAt).toLocaleString();
+
+          const componentsHTML = Object.entries(build.components).map(
+            ([type, data]) => `<li><strong>${type.toUpperCase()}</strong>: ${data.name}</li>`
+          ).join('');
+
+          buildDiv.innerHTML = `
+                        <h3>Build from ${date}</h3>
+                        <ul>${componentsHTML}</ul>
+                        <p><strong>Total:</strong> $${build.totalPrice}</p>
+                    `;
+
+          container.appendChild(buildDiv);
+        });
+
+      } catch (err) {
+        console.error(err);
+        container.innerHTML = "<p>Error loading builds. Try again later.</p>";
+      }
+    }
+  </script>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section about">
+        <h3>About Us</h3>
+        <p>Learn more about our mission to help you build the perfect PC.</p>
+      </div>
+      <div class="footer-section links">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="careers.html">Careers</a></li>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="terms.html">Terms of Service</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2025 PC Build | All Rights Reserved
+    </div>
+  </footer>
+  
+</body>
+
+</html>

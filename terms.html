@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terms of Service | PC Build</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <nav>
+    <div class="logo">
+      <a href="index.html"><img src="logo.png" alt="PC Build Logo" /></a>
+    </div>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="start-building.html">Build Your PC</a></li>
+      <li><a href="dashboard.html">My Builds</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="login.html">Login</a></li>
+      <li><a href="signup.html">Sign Up</a></li>
+      <li><button id="toggle-theme">🌗</button></li>
+    </ul>
+  </nav>
+
+  <section class="contact-page">
+    <div class="contact-container">
+      <h1>Terms of Vibes</h1>
+      <p>By using this site, you agree to absolutely nothing. That’s the agreement.</p>
+      
+      <ul>
+        <li>📚 This site is part of a college project. Don't sue us — we’re broke.</li>
+        <li>🤷‍♂️ If something breaks, that’s on you. Or maybe us. Let’s just call it a group effort.</li>
+        <li>🧪 Everything here is fake. Except the hustle. That was real.</li>
+      </ul>
+      
+      <p>
+        Enjoy the site. Or don’t. But like... please do — it’s for marks 😅
+      </p>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section about">
+        <h3>About Us</h3>
+        <p>Learn more about our mission to help you build the perfect PC.</p>
+      </div>
+      <div class="footer-section links">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="careers.html">Careers</a></li>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="terms.html">Terms of Service</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2025 PC Build | All Rights Reserved
+    </div>
+  </footer>
+
+  <script>
+    const toggleTheme = document.getElementById('toggle-theme');
+    document.addEventListener('DOMContentLoaded', () => {
+      if (localStorage.getItem('theme') === 'dark') {
+        document.body.classList.add('dark-mode');
+      }
+    });
+
+    toggleTheme.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+      localStorage.setItem('theme', document.body.classList.contains('dark-mode') ? 'dark' : 'light');
+    });
+  </script>
+</body>
+
+</html>

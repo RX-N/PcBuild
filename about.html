@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About | PC Builder</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <!-- Modern Blurry Navbar -->
+  <nav>
+    <div class="logo">
+      <a href="index.html">
+        <img src="logo.png" alt="PC Build Logo">
+      </a>
+    </div>
+
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="start-building.html">Build Your PC</a></li>
+      <li><a href="dashboard.html">My Builds</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="login.html">Login</a></li>
+      <li><a href="signup.html">Sign Up</a></li>
+      <li><button id="toggle-theme" title="Toggle Light/Dark Mode">🌗</button></li>
+    </ul>
+  </nav>
+
+  <!-- Main Content -->
+  <section class="about-section">
+    <div class="about-container">
+      <h1>About This Project</h1>
+      <p>This full-stack mini project allows users to build custom PCs while managing authentication and compatibility
+        logic.</p>
+      <p>It is made by <b style="color: #ffcc00;">Riaan Jain</b> and <b style="color: #ffcc00;">Anay Khanolkar</b> from K.J. Somaiya School of Engineering.</p>
+
+      <h2>👨‍💻 Technologies Used</h2>
+      <ul>
+        <li>Frontend: HTML, CSS, JavaScript</li>
+        <li>Backend: Node.js & Express</li>
+        <li>Database: MongoDB (Mongoose)</li>
+        <li>Security: JWT for authentication</li>
+      </ul>
+
+      <h2>🔧 Features</h2>
+      <ul>
+        <li>User Registration & Login</li>
+        <li>Dark/Light Mode Toggle</li>
+        <li>Build your own PC with compatibility logic</li>
+        <li>Save builds and view in dashboard</li>
+      </ul>
+
+      <p>This website is developed for academic purposes and showcases complete full-stack development skills.</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section about">
+        <h3>About Us</h3>
+        <p>Learn more about our mission to help you build the perfect PC.</p>
+      </div>
+      <div class="footer-section links">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="careers.html">Careers</a></li>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="terms.html">Terms of Service</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2025 PC Build | All Rights Reserved
+    </div>
+  </footer>
+
+  <!-- Theme Toggle Script -->
+  <script>
+    const toggleTheme = document.getElementById('toggle-theme');
+    document.addEventListener('DOMContentLoaded', () => {
+      if (localStorage.getItem('theme') === 'dark') {
+        document.body.classList.add('dark-mode');
+      }
+    });
+
+    toggleTheme.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+      localStorage.setItem('theme',
+        document.body.classList.contains('dark-mode') ? 'dark' : 'light');
+    });
+  </script>
+</body>
+
+</html>

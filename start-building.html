@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Start Building</title>
+    <link rel="stylesheet" href="start-building.css" />
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="logo">
+            <a href="index.html">
+                <img src="logo.png" alt="PC Build Logo" />
+            </a>
+        </div>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="start-building.html">Build Your PC</a></li>
+            <li><a href="dashboard.html">My Builds</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="login.html">Login</a></li>
+            <li><a href="signup.html">Sign Up</a></li>
+            <li><button id="toggle-theme" title="Toggle Light/Dark Mode">🌗</button></li>
+        </ul>
+    </nav>
+
+    <!-- Main Container -->
+    <div class="container">
+        <h1>Start Building Your PC</h1>
+
+        <div id="component-sections">
+            <!-- JS will inject all categories here -->
+        </div>
+
+        <div id="selected-components">
+            <h2>Selected Components</h2>
+            <ul id="selected-list"></ul>
+        </div>
+
+        <div id="total-price">
+            <h3>Total Price: $<span id="price-value">0</span></h3>
+        </div>
+
+        <div id="benchmark-score">
+            <div id="benchmark-container">
+                <h3>Estimated Benchmark Score</h3>
+                <div id="benchmark-bar-wrapper">
+                    <div id="benchmark-bar"></div>
+                </div>
+                <div id="benchmark-value-label">N/A</div>
+            </div>
+        </div>
+
+        <button id="save-build">💾 Save Build</button>
+    </div>
+
+    <!-- Scroll Navigation Arrows -->
+    <div class="scroll-nav">
+        <button id="go-top" title="Go to Top">⤒</button>
+        <button id="scroll-up" title="Previous Section">↑</button>
+        <button id="scroll-down" title="Next Section">↓</button>
+        <button id="go-bottom" title="Go to Bottom">⤓</button>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section about">
+                <h3>About Us</h3>
+                <p>Learn more about our mission to help you build the perfect PC.</p>
+            </div>
+            <div class="footer-section links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="careers.html">Careers</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="terms.html">Terms of Service</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2025 PC Build | All Rights Reserved
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="start-building.js"></script>
+</body>
+
+</html>

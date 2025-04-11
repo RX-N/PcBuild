@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Careers | PC Build</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <!-- Navbar -->
+  <nav>
+    <div class="logo">
+      <a href="index.html"><img src="logo.png" alt="PC Build Logo" /></a>
+    </div>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="start-building.html">Build Your PC</a></li>
+      <li><a href="dashboard.html">My Builds</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="login.html">Login</a></li>
+      <li><a href="signup.html">Sign Up</a></li>
+      <li><button id="toggle-theme">🌗</button></li>
+    </ul>
+  </nav>
+
+  <!-- Content -->
+  <section class="contact-page">
+    <div class="contact-container">
+      <h1>Careers at PC Build Inc.™️</h1>
+      <p>Welcome to the least HR-compliant careers page on the internet.</p>
+      
+      <p>Open Positions:</p>
+      <ul>
+        <li>🧑‍💻 Full-Stack Developer (must know at least one StackOverflow trick)</li>
+        <li>🦄 UX Magician (please have opinions about fonts)</li>
+        <li>🤖 AI Whisperer (no clue what this means but it sounds cool)</li>
+      </ul>
+      
+      <p>
+        Think you’re a fit? Fantastic! Send your resume to
+        <strong>definitelynotreal@pcbuild.fake</strong><br />
+        Or just scream into the void — same result.
+      </p>
+      <p>Bonus points if your cover letter is a meme.</p>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section about">
+        <h3>About Us</h3>
+        <p>Learn more about our mission to help you build the perfect PC.</p>
+      </div>
+      <div class="footer-section links">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="careers.html">Careers</a></li>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="terms.html">Terms of Service</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2025 PC Build | All Rights Reserved
+    </div>
+  </footer>
+
+  <script>
+    const toggleTheme = document.getElementById('toggle-theme');
+    document.addEventListener('DOMContentLoaded', () => {
+      if (localStorage.getItem('theme') === 'dark') {
+        document.body.classList.add('dark-mode');
+      }
+    });
+
+    toggleTheme.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+      localStorage.setItem('theme', document.body.classList.contains('dark-mode') ? 'dark' : 'light');
+    });
+  </script>
+</body>
+
+</html>
