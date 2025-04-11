@@ -2,26 +2,17 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-
-const app = express();
-const port = 3000;
 const path = require('path');
 
-// Serve static frontend files
-app.use(express.static(path.join(__dirname, '../')));
-
-// Optional: serve index.html for base route
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '../index.html'));
-});
-
+const app = express();
+const port = process.env.PORT || 3000;
 
 // Middleware
 app.use(bodyParser.json());
 app.use(cors());
 
 // MongoDB connection
-mongoose.connect('mongodb://localhost:27017/pcbuild', {
+mongoose.connect(process.env.MONGO_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 });
@@ -32,14 +23,19 @@ db.once('open', () => {
     console.log('Connected to MongoDB');
 });
 
+// Optional static file serving
+app.use(express.static(path.join(__dirname, '../')));
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, '../index.html'));
+});
+
 // Routes
 app.use('/api/users', require('./routes/users'));
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/builds', require('./routes/builds'));
 app.use('/api/messages', require('./routes/messages'));
 
-
 // Start server
 app.listen(port, () => {
-    console.log(`Server running on http://localhost:${port}`);
+    console.log(`Server running on port ${port}`);
 });
