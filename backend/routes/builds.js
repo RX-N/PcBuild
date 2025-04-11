@@ -49,4 +49,15 @@ router.get('/', auth, async (req, res) => {
   }
 });
 
+// Get all builds for logged-in user
+router.get('/mybuilds', auth, async (req, res) => {
+  try {
+    const builds = await Build.find({ userId: req.user.userId }).sort({ createdAt: -1 });
+    res.json(builds);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Failed to fetch builds' });
+  }
+});
+
 module.exports = router;
