@@ -357,3 +357,20 @@ footer {
     position: relative;
     z-index: 3;
 }
+
+.saved-builds-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    /* Adds space between build cards */
+}
+
+.build-card {
+    flex: 0 1 calc(20% - 20px);
+    /* 5 builds per row with gap consideration */
+    max-width: 240px;
+    /* Matches the existing component-card width */
+    margin-bottom: 20px;
+    /* Adds vertical spacing between rows */
+}
