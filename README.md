@@ -47,13 +47,6 @@ Start the server and open your browser to view the project.
     http://localhost:3000
     ```
 
-## Project Structure
-PcBuild/ ├── .github/workflows ├── backend ├── data ├── LICENSE ├── public │ ├── images │ └── stylesheets ├── views ├── about.html ├── app.html ├── careers.html ├── contact.html ├── dashboard.html ├── index.html ├── login.html ├── privacy.html ├── signup.html ├── start-building.html ├── terms.html ├── compatibility.js ├── component-flow.js ├── index.js ├── package-lock.json ├── package.json ├── server.js └── README.md
-
-text
-
-Copy
-
 ## Screenshots
 ![Home Page](homeback.png)
 
