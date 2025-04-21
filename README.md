@@ -3,7 +3,7 @@
 [GitHub Repository](https://github.com/RX-N/PcBuild/tree/main)
 
 ## Overview
-PcBuild is a mini-project designed to assist users in planning and visualizing their PC builds. With a focus on ease of use and flexibility, this project includes multiple features aimed at simplifying the process of selecting and matching PC components.
+Build My Rig is a mini-project designed to assist users in planning and visualizing their PC builds. With a focus on ease of use and flexibility, this project includes multiple features aimed at simplifying the process of selecting and matching PC components.
 
 ## Table of Contents
 - [Features](#features)
