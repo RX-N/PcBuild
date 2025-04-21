@@ -1,4 +1,4 @@
-# PcBuild
+# Build My Rig
 
 [GitHub Repository](https://github.com/RX-N/PcBuild/tree/main)
 
