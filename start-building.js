@@ -190,31 +190,58 @@ function updateBenchmarkScore() {
 
   const cpu = selectedComponents["cpu"];
   const gpu = selectedComponents["videocard"];
+  const ram = selectedComponents["memory"];
+  const storage = selectedComponents["internalharddrive"];
+  const psu = selectedComponents["powersupply"];
 
+  // --- CPU ---
   if (cpu) {
-    const cpuCores = cpu.core_count || 6;
-    const cpuClock = parseFloat(cpu.boost_clock) || 3.5;
-    score += (cpuCores * cpuClock) * 10 * 0.4;
+    const cores = cpu.core_count || 4;
+    const boost = parseFloat(cpu.boost_clock) || 3.0;
+    const threads = cpu.thread_count || (cores * 2);
+    score += (cores * boost * 5) + (threads * 2); // More sensitive
   }
 
+  // --- GPU ---
   if (gpu) {
-    const gpuMemory = gpu.memory || 8;
-    const gpuClock = parseFloat(gpu.boost_clock) || 1500;
-    score += ((gpuMemory * gpuClock / 1000) * 10) * 0.5;
+    const vram = gpu.memory || 4;
+    const boost = parseFloat(gpu.boost_clock) || 1200;
+    const base = parseFloat(gpu.core_clock) || 1000;
+    const effectiveClock = (boost + base) / 2;
+    score += (vram * effectiveClock / 1000) * 7; // Amplified impact
   }
 
-  if (selectedComponents["internalharddrive"]) score += 10;
-  if (selectedComponents["powersupply"]) score += 10;
+  // --- RAM ---
+  if (ram) {
+    const ramSize = ram.memory_size || 8;
+    const ramSpeed = ram.memory_speed || 2400;
+    score += (ramSize * ramSpeed / 1000) * 0.8; // RAM effect
+  }
 
+  // --- Storage ---
+  if (storage) {
+    const isSSD = storage.type?.toLowerCase().includes("ssd");
+    score += isSSD ? 10 : 5; // Simple SSD bonus
+  }
+
+  // --- PSU ---
+  if (psu) {
+    const wattage = psu.wattage || 500;
+    score += wattage >= 750 ? 10 : 5;
+  }
+
+  // --- Final Normalization ---
+  const maxPossible = 400; // You could scale this if high-end parts overshoot
   const roundedScore = Math.round(score);
-  const percent = Math.min((roundedScore / 400) * 100, 100); // Assuming 400 is "max"
+  const percent = Math.min((roundedScore / maxPossible) * 100, 100);
 
   // Update UI
   const bar = document.getElementById("benchmark-bar");
   const label = document.getElementById("benchmark-value-label");
   if (bar) bar.style.width = `${percent}%`;
-  if (label) label.textContent = `${roundedScore} / 400`;
+  if (label) label.textContent = `${roundedScore} / ${maxPossible}`;
 }
+
 
 
 
